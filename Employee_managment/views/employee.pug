@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+    title= "employee"
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    header
+      a(Id = "welcome_place" class = "link") Welcome Place
+      a(Id = "employee" class = "link") Employee
+      a(Id = "department" class = "link") Department
+      a(Id = "position" class = "link") Position
+
+    article(class = "search")
+      form(name = "form" method = 'get')
+            input(type="text" placeholder='Search' name='search')
+      a(id = "Search" class= 'button') Search
+
+    article(class = "add")
+      form(name = "form" method = 'get')
+            input(type="text" placeholder='FirstName' name='firstname')
+            input(type="text" placeholder='LastName' name='lastname')
+            input(type="text" placeholder='Adress' name='adress')
+            input(type="number" placeholder='Seniority' name='seniority')
+            input(type="text" placeholder='Department' name='department')
+            input(type="text" placeholder='Position' name='position')
+      a(id = "add" class= 'button') +
+
+
+  script(type = 'module' src='/javascripts/redirection.js')

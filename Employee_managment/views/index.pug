@@ -1,17 +1,25 @@
 doctype html
 html
   head
-    title= title
+    title= "welcome place"
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
     header
-      a(Id = "Employee" class = "link") Employee
-      a(Id = "Employee" class = "link") Employee
-      a(Id = "Employee" class = "link") Employee
-    article(class = "search")
-      form(action="") 
-    article(class = "add")
-      form(action="")
+      a(Id = "welcome_place" class = "link") Welcome Place
+      a(Id = "employee" class = "link") Employee
+      a(Id = "department" class = "link") Department
+      a(Id = "position" class = "link") Position
+    article(class = "content")
+      p This is our web site SQL editor, where you can add or delete element in a table
+      p
+      p Switch betwenn table with the button on the top.
+      p
+      p Scroll to fin information you want or search with the search bar perhaps.
+      p
+      p Delete an entry by clicking on the buton on the right of the entry (beware supresions are recursive).
+      p
+      p Add an entry to the table whith te dedicated formular.
+      p
+      p Enjoyr or trusty and simple tool :).
 
-      
-  script(type = 'module' src='/javascripts/index.js')
+  script(type = 'module' src='/javascripts/redirection.js')
