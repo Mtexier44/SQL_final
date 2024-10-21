@@ -25,22 +25,46 @@ class Manager{
 
     getEmployee(socket) {
         socket.on('getEmployee', () => {
-            socket.emit('Employee', ["exemple","exemple","exemple","exemple","exemple","exemple","exemple","exemple"]);
+            socket.emit('Employee', ["exemple","exemple","exemple","exemple","exemple","exemple","exemple"]);
             console.log("Liste émise avec succes !");
+        })
+
+        socket.on('SearchEmployee', (list) => {
+            console.log(list);
+        })
+
+        socket.on('AddEmployee', (list) => {
+            console.log(list);
         })
     }
 
     getDepartement(socket) {
         socket.on('getDepartements', () => {
-            socket.emit('Departements', ["exemple","exemple","exemple"]);
+            socket.emit('Departements', ["exemple","exemple"]);
             console.log("Liste émise avec succes !");
+        })
+
+        socket.on('SearchDepartment', (list) => {
+            console.log(list);
+        })
+
+        socket.on('AddDepartment', (list) => {
+            console.log(list);
         })
     }
 
     getPosition(socket) {
         socket.on('getPosition', () => {
-            socket.emit('Position', ["exemple","exemple","exemple","exemple","exemple","exemple"]);
+            socket.emit('Position', ["exemple","exemple","exemple","exemple","exemple"]);
             console.log("Liste émise avec succes !");
+        })
+
+        socket.on('SearchPosition', (list) => {
+            console.log(list);
+        })
+
+        socket.on('AddPosition', (list) => {
+            console.log(list);
         })
     }
 }

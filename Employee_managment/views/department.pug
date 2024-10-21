@@ -12,11 +12,14 @@ html
 
     article(class = "search")
       form(name = "form" method = 'get')
+            select(name="Selection") 
+              option(value="") 
+              option(value="Name") name
             input(type="text" placeholder='Search' name='search')
       a(id = "Search" class= 'button') Search
 
     article(class = "add")
-      form(name = "form" method = 'get')
+      form(name = "form2" method = 'get')
             input(type="text" placeholder='Name' name='name')
       a(id = "add" class= 'button') +
       
