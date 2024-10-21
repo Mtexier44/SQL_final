@@ -24,6 +24,19 @@ html
             input(type="text" placeholder='Department' name='department')
             input(type="text" placeholder='Position' name='position')
       a(id = "add" class= 'button') +
-
+      
+    table 
+      thead 
+        tr 
+          th(scope="col") ID
+          th(scope="col") FirstName
+          th(scope="col") LasttName
+          th(scope="col") Adress
+          th(scope="col") Seniority
+          th(scope="col") Department
+          th(scope="col") Position
+          th(scope="col") 
+      tbody 
 
   script(type = 'module' src='/javascripts/redirection.js')
+  script(type = 'module' src='/javascripts/employee.js')
