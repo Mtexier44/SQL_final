@@ -11,6 +11,7 @@ document.getElementById("add").onclick = function() {
             break;
         } else if (i == toSend.length - 1) {
             socket.emit('AddDepartment',toSend);
+            document.location.href="/department";
         }
     }
 };

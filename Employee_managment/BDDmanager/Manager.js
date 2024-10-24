@@ -1,10 +1,16 @@
 var {Server} = require("socket.io");
 var sq = require('sqlite3');
 
-var db = new sq.Database("../../BDD/data.db");
 
 class Manager{
     io;
+    db = new sq.Database('../BDD/data.db', sq.OPEN_READWRITE, (err) => {
+        if (err) {
+            console.error(err.message);
+        } else {
+            console.log('Connecté à la base de données SQLite.');
+        }
+    });
 
     constructor(serveur) {
         this.io = new Server(serveur);
@@ -28,65 +34,67 @@ class Manager{
 
     getEmployee(socket) {
         socket.on('getEmployee', () => {
-            // ajoputer requéte sql
-        db.each("SELECT * FROM Employee", function(err, row) {
-            if (err) {
-                console.log(err);
-            } else {
-                socket.emit('Employee', [row.,row.,row.,row.,row.,row.,row.]);
-            }
-        });
+            this.db.each("SELECT * FROM Employee", function(err, row) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    socket.emit('Employee', [row.EmployeeID,row.Name,row.LastName,row.Address,row.Seniority,row.DepartmentID,row.PositionID]);
+                }
+            });
             console.log("Liste émise avec succes !");
         })
 
         socket.on('AddEmployee', (list) => {
-            // ajoputer requéte sql
-            db.run("")
+            this.db.run("INSERT INTO Employee (Name, LastName, Address, Seniority, DepartmentID, PositionID) VALUES (?, ?, ?, ?, ?, ?)", list)
             console.log(list);
         })
 
         socket.on('DelEmployee', (ID) => {
-            // ajoputer requéte sql
-            db.run("")
-            console.log("you did it")
+            this.db.run("DELETE FROM Employee WHERE EmployeeID = ?", ID)
         })
     }
 
     getDepartement(socket) {
         socket.on('getDepartements', () => {
-            // ajoputer requéte sql
-            socket.emit('Departements', ["exemple","exemple"]);
+            this.db.each("SELECT * FROM Departments", function(err, row) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    socket.emit('Departements', [row.DepartmentID,row.Name]);
+                }
+            });
             console.log("Liste émise avec succes !");
         })
 
         socket.on('AddDepartment', (list) => {
-            // ajoputer requéte sql
-            db.run("")
+            this.db.run("INSERT INTO Departments (Name) VALUES (?)", list)
             console.log(list);
         })
 
         socket.on('DelDepartement', (ID) => {
-            // ajoputer requéte sql
-            db.run("")
+            this.db.run("DELETE FROM Departments WHERE DepartmentID = ?", ID)
         })
     }
 
     getPosition(socket) {
         socket.on('getPosition', () => {
-            // ajoputer requéte sql
-            socket.emit('Position', ["exemple","exemple","exemple","exemple","exemple"]);
+            this.db.each("SELECT * FROM Position", function(err, row) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    socket.emit('Position', [row.PositionID,row.Name,row.Authority,row.DepChef,row.Salary]);
+                }
+            });
             console.log("Liste émise avec succes !");
         })
 
         socket.on('AddPosition', (list) => {
-            // ajoputer requéte sql
-            db.run("")
+            this.db.run("INSERT INTO Position (Name, Authority, DepChef, Salary) VALUES (?, ?, ?, ?)", list)
             console.log(list);
         })
 
         socket.on('DelPosition', (ID) => {
-            // ajoputer requéte sql
-            db.run("")
+            this.db.run("DELETE FROM Position WHERE PositionID = ?", ID)
         })
     }
 }

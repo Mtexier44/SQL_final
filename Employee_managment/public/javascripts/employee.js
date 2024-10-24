@@ -16,6 +16,7 @@ document.getElementById("add").onclick = function() {
             break;
         } else if (i == toSend.length - 1) {
             socket.emit('AddEmployee',toSend);
+            document.location.href="/employee";
         }
     }
 };

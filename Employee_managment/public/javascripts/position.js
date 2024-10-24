@@ -14,6 +14,7 @@ document.getElementById("add").onclick = function() {
             break;
         } else if (i == toSend.length - 1) {
             socket.emit('AddPosition',toSend);
+            document.location.href="/position";
         }
     }
 };
