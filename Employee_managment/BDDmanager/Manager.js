@@ -1,4 +1,7 @@
 var {Server} = require("socket.io");
+var sq = require('sqlite3');
+
+var db = new sq.Database("../../BDD/data.db");
 
 class Manager{
     io;
@@ -26,17 +29,25 @@ class Manager{
     getEmployee(socket) {
         socket.on('getEmployee', () => {
             // ajoputer requéte sql
-            socket.emit('Employee', ["exemple","exemple","exemple","exemple","exemple","exemple","exemple"]);
+        db.each("SELECT * FROM Employee", function(err, row) {
+            if (err) {
+                console.log(err);
+            } else {
+                socket.emit('Employee', [row.,row.,row.,row.,row.,row.,row.]);
+            }
+        });
             console.log("Liste émise avec succes !");
         })
 
         socket.on('AddEmployee', (list) => {
             // ajoputer requéte sql
+            db.run("")
             console.log(list);
         })
 
         socket.on('DelEmployee', (ID) => {
             // ajoputer requéte sql
+            db.run("")
             console.log("you did it")
         })
     }
@@ -50,11 +61,13 @@ class Manager{
 
         socket.on('AddDepartment', (list) => {
             // ajoputer requéte sql
+            db.run("")
             console.log(list);
         })
 
         socket.on('DelDepartement', (ID) => {
             // ajoputer requéte sql
+            db.run("")
         })
     }
 
@@ -67,11 +80,13 @@ class Manager{
 
         socket.on('AddPosition', (list) => {
             // ajoputer requéte sql
+            db.run("")
             console.log(list);
         })
 
         socket.on('DelPosition', (ID) => {
             // ajoputer requéte sql
+            db.run("")
         })
     }
 }
