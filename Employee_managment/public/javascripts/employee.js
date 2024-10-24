@@ -2,16 +2,6 @@ import { io } from "https://cdn.socket.io/4.7.4/socket.io.esm.min.js";
 
 window.socket = io();
 
-document.getElementById("Search").onclick = function() {
-    var colum = document.forms["form"]["Selection"].value;
-    var Search = document.forms["form"]["search"].value;
-    if (Search === '' || colum === '') {
-        alert('Empty Search !');
-    } else {
-        socket.emit('SearchEmployee',[colum,Search]);
-    };
-};
-
 document.getElementById("add").onclick = function() {
     var toSend = [];
     toSend.push(document.forms["form2"]["firstname"].value);
@@ -41,6 +31,15 @@ socket.on('Employee', (Files) => {
         cell.append(cellText);
         row.append(cell);
     } 
+    
+    var cell = document.createElement("td");
+    var cellText = document.createTextNode("Dellete");
+    cell.onclick = function del() {
+        socket.emit('DelEmployee', Files[0])
+        document.location.href="/employee";
+    }
+    cell.append(cellText);
+    row.append(cell);
     
     tblBody.append(row);
 });

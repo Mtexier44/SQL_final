@@ -25,46 +25,53 @@ class Manager{
 
     getEmployee(socket) {
         socket.on('getEmployee', () => {
+            // ajoputer requéte sql
             socket.emit('Employee', ["exemple","exemple","exemple","exemple","exemple","exemple","exemple"]);
             console.log("Liste émise avec succes !");
         })
 
-        socket.on('SearchEmployee', (list) => {
+        socket.on('AddEmployee', (list) => {
+            // ajoputer requéte sql
             console.log(list);
         })
 
-        socket.on('AddEmployee', (list) => {
-            console.log(list);
+        socket.on('DelEmployee', (ID) => {
+            // ajoputer requéte sql
+            console.log("you did it")
         })
     }
 
     getDepartement(socket) {
         socket.on('getDepartements', () => {
+            // ajoputer requéte sql
             socket.emit('Departements', ["exemple","exemple"]);
             console.log("Liste émise avec succes !");
         })
 
-        socket.on('SearchDepartment', (list) => {
+        socket.on('AddDepartment', (list) => {
+            // ajoputer requéte sql
             console.log(list);
         })
 
-        socket.on('AddDepartment', (list) => {
-            console.log(list);
+        socket.on('DelDepartement', (ID) => {
+            // ajoputer requéte sql
         })
     }
 
     getPosition(socket) {
         socket.on('getPosition', () => {
+            // ajoputer requéte sql
             socket.emit('Position', ["exemple","exemple","exemple","exemple","exemple"]);
             console.log("Liste émise avec succes !");
         })
 
-        socket.on('SearchPosition', (list) => {
+        socket.on('AddPosition', (list) => {
+            // ajoputer requéte sql
             console.log(list);
         })
 
-        socket.on('AddPosition', (list) => {
-            console.log(list);
+        socket.on('DelPosition', (ID) => {
+            // ajoputer requéte sql
         })
     }
 }

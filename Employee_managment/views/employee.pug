@@ -11,17 +11,7 @@ html
       a(Id = "position" class = "link") Position
 
     article(class = "search")
-      form(name = "form" method = 'get')
-            select(name="Selection") 
-              option(value="") 
-              option(value="FirstName") firstname
-              option(value="LastName") lastname
-              option(value="Adress") adress
-              option(value="Seniority") seniority
-              option(value="Department") department
-              option(value="Position") position
-            input(type="text" placeholder='Search' name='search')
-      a(id = "Search" class= 'button') Search
+      input(type="text" placeholder='Search' name='search' id="Input")
 
     article(class = "add")
       form(name = "form2" method = 'get')
@@ -48,3 +38,4 @@ html
 
   script(type = 'module' src='/javascripts/redirection.js')
   script(type = 'module' src='/javascripts/employee.js')
+  script(type = 'module' src='/javascripts/search.js')
